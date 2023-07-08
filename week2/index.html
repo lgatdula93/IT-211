@@ -1,0 +1,64 @@
+<!--
+
+Lourdes Gatdula
+July 07,2023
+
+Use your knowledge of JavaScript strings and conditional logic to write a program that accepts text input and prints out the Pig Latin translation according to the above rules.
+
+If the user enters nothing or a single-letter word, your program should print a message that the input can't be translated.
+  
+-->
+
+<!DOCTYPE html>
+<html>
+
+<style>
+    body {
+        background-color:#FF9FD6;
+        font-family:sans-serif;
+        text-align:center;
+    }
+
+    p {
+        font-size: 14pt;
+    }
+
+    h1 {
+        font-size: 38pt;
+        font-weight:bold;
+    }
+
+    input {
+        padding: 24px;
+    }
+
+    .text-output {
+        padding: 10px;
+    }
+</style>
+
+<head>
+
+  <title>Pig Latin Translator</title>
+
+</head>
+
+<body>
+
+    <h1>Pig Latin</h1>
+
+    <img src="https://esllibrary.s3.amazonaws.com/uploads/post/title_image/2091/Lara_Pig-Latin-and-Othe-Made-Up-Languages_Banner.png" alt="pig banner" width="640px"></img>
+    
+    <p>Enter a word below to translate into Pig Latin</p>
+
+    <input type="text" id="userInput"> <br>
+    
+    <p><strong>Translation</strong></p>
+    
+    <span id="pigConverted"></span>
+
+    <script src="script.js"></script>
+  
+</body>
+
+</html>
