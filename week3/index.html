@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+    body {
+        background-color: lavender;
+        font-family: sans-serif;
+    }
+
+    h1 {
+        background-color: white, 80%;
+        border: black solid 2px;
+        font-size: 20pt;
+        text-align: center;
+        padding: 10px;
+    }
+
+    div {
+        background-color: white;
+        padding: 20px;
+    }
+</style>
+
+<head>
+    <title>Student Grades</title>
+</head>
+<body>
+    <h1>Student Grades</h1>
+
+    <div>
+        <script>
+            const grades = "jim|25, sue|32, mary|34, ann|22, ted|28, frank|15, lisa|19, mike|30, ahn|26, vishaya|27";
+            let students = grades.split(", ");
+            let studentInfo = [];
+            let totalStudents = students.length;
+            let totalScore = 0;
+            let lowestScore = Infinity;
+            let highestScore = -Infinity;
+
+            for (let i = 0; i < students.length; i++) {
+                let student = students[i].split("|");
+                let name = student[0].charAt(0).toUpperCase() + student[0].slice(1);
+                let score = parseInt(student[1]);
+                studentInfo.push({ name: name, score: score });
+                totalScore += score;
+
+                // Lowest and highest scores
+                if (score < lowestScore) {
+                    lowestScore = score;
+                }
+                
+                if (score > highestScore) {
+                    highestScore = score;
+                }
+            }
+
+            // Organize or sort students' names into alphabetical order
+            studentInfo.sort(function(a, b) {
+                return a.name.localeCompare(b.name);
+            });
+
+            // Display students' name and grade
+            for (let j = 0; j < studentInfo.length; j++) {
+                document.write("<br>" + studentInfo[j].name + " - " + studentInfo[j].score);
+            }
+
+            // Students total
+            document.write("<h4>Total number of students: " + totalStudents) + "</h4>";
+
+            // Average Score
+            let averageScore = totalScore / totalStudents;
+            document.write("<br>Average: " + averageScore.toFixed(2));
+
+            // Highest and Lowest Score
+            document.write("<br>Highest: " + highestScore);
+            document.write("<br>Lowest: " + lowestScore);
+        </script>
+    </div>
+</body>
+</html>

@@ -10,7 +10,7 @@ userInput.oninput = function() {
             afterPig = "Please enter a word that has more than one character.";
         }
 
-        else if (!vowels.includes(beforePig.charAt(0)) && !vowels.includes(beforePig.charAt[1])) {
+        else if (!vowels.includes(beforePig.charAt(0)) && !vowels.includes(beforePig.charAt(1))) {
             // if the first two letters are consonants, bring them to the end of the word and add 'ay'
             afterPig = beforePig.slice(2) + beforePig.slice(0, 2) + 'ay';
         }
