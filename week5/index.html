@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Card Dealing Program</title>
+</head>
+<body>
+  <h1>Card Dealing Program</h1>
+  <div id="hand">
+    <!-- Selected cards will be displayed here -->
+  </div>
+  <button onclick="drawNewHand()">Draw New Hand</button>
+
+  <script>
+    // Card object constructor
+    function Card(value, suit) {
+      this.value = value;
+      this.suit = suit;
+    }
+
+    // Face cards map for display
+    const faceCards = {
+      11: 'Jack',
+      12: 'Queen',
+      13: 'King',
+      14: 'Ace',
+    };
+
+    // Function to get the display name of a card
+    function getCardName(card) {
+      if (card.value >= 2 && card.value <= 10) {
+        return card.value + ' of ' + card.suit;
+      } else {
+        return faceCards[card.value] + ' of ' + card.suit;
+      }
+    }
+
+    // Array to hold all cards in the deck
+    const deck = [];
+
+    // Function to create the deck of cards
+    function createDeck() {
+      const suits = ['Hearts', 'Spades', 'Diamonds', 'Clubs'];
+      for (let suit of suits) {
+        for (let value = 2; value <= 14; value++) {
+          deck.push(new Card(value, suit));
+        }
+      }
+    }
+
+    // Function to create the initial deck
+    createDeck();
+
+    // Function to get 5 random cards from the deck
+    function getRandomHand() {
+      const hand = [];
+      while (hand.length < 5) {
+        const randomIndex = Math.floor(Math.random() * deck.length);
+        hand.push(deck.splice(randomIndex, 1)[0]);
+      }
+      return hand;
+    }
+
+    // Function to display the hand on the HTML page
+    function displayHand(hand) {
+      const handContainer = document.getElementById('hand');
+      handContainer.innerHTML = '';
+      hand.forEach(card => {
+        const cardName = getCardName(card);
+        const cardDiv = document.createElement('div');
+        cardDiv.textContent = '- ' + cardName;
+        handContainer.appendChild(cardDiv);
+      });
+    }
+
+    // Function to draw a new hand and display it
+    function drawNewHand() {
+      const hand = getRandomHand();
+      displayHand(hand);
+    }
+  </script>
+</body>
+</html>
